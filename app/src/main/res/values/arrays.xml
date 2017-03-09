@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_values">
+        <item>LinearLayoutManager</item>
+        <item>GridLayoutManager</item>
+        <item>Step 1</item>
+        <item>Step 2</item>
+        <item>Step 3</item>
+        <item>Step 4</item>
+    </string-array>
+</resources>
