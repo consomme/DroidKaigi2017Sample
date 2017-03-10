@@ -26,7 +26,7 @@ public class Step1LayoutManager extends RecyclerView.LayoutManager {
 
     @Override
     public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
-        // 表示している先頭のViewを取得
+        // 先頭のViewを取得
         final View topView = getChildCount() > 0 ? getChildAt(0) : null;
 
         // 先頭Viewの上辺座標を取得
@@ -52,7 +52,7 @@ public class Step1LayoutManager extends RecyclerView.LayoutManager {
             addView(view, i);
             measureChildWithMargins(view, 0, 0);
 
-            // 追加するViewの可変座標を取得
+            // 追加するViewの下辺座標を取得
             bottom = top + getDecoratedMeasuredHeight(view);
 
             // 子Viewを親Viewに表示
