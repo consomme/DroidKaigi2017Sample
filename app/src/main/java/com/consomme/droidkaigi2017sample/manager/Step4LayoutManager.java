@@ -87,6 +87,36 @@ public class Step4LayoutManager extends Step1LayoutManager {
             }
         }
 
+        // 非表示になったViewをリサイクルする
+
+        final int childCount = getChildCount();
+        final int parentHeight = getHeight();
+
+        // 画面外に出た先頭Viewのposition
+        int firstRecyclerPosition = -1;
+
+        // 画面外に出た最後のViewのposition
+        int lastRecyclePosition = -1;
+
+        for (int i = 0; i < childCount; i++) {
+            final View view = getChildAt(i);
+
+            // 座標を親Viewと比較し、画面外に出ていればrecycle対象となる
+            if (getDecoratedTop(view) < parentHeight && getDecoratedBottom(view) > 0) {
+                if (firstRecyclerPosition < 0) {
+                    firstRecyclerPosition = i;
+                }
+                lastRecyclePosition = i;
+            }
+        }
+
+        for (int i = 0; i < firstRecyclerPosition; i++) {
+            removeAndRecycleViewAt(i, recycler);
+        }
+        for (int i = childCount - 1; i > lastRecyclePosition; i--) {
+            removeAndRecycleViewAt(i, recycler);
+        }
+
         return delta;
     }
 }
